@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+fussballgott/__init__.py
+fussballgott/fussball.py
+fussballgott/load.py
+fussballgott/team.py
+fussballgott.egg-info/PKG-INFO
+fussballgott.egg-info/SOURCES.txt
+fussballgott.egg-info/dependency_links.txt
+fussballgott.egg-info/top_level.txt
