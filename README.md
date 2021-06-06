@@ -55,12 +55,13 @@ There are three ways of simulating a league:
 
 1. Full simulation: Most convenient for simulation at the beginning of a season. For doing that, you have to initialize the team strengths first by creating a dictionary where you create for each team a teamclass object:
 
-`teams = {}
+```
+teams = {}
 teams['GCZ'] = team.team(name='GCZ', GoalsF=3.1, GoalsA=0.9)
 teams['YB'] = team.team(name='FCB', GoalsF=2.3, GoalsA=1.7)
 teams['FCB'] = team.team(name='FCB', GoalsF=2, GoalsA=3.2)
 teams['FCZ'] = team.team(name='FCZ', GoalsF=1, GoalsA=4.3)
-`
+```
 
 Then you can run the simulation using
 
@@ -112,4 +113,4 @@ where `demo_tournament_` is the prefix of all your CSV files. Let the simulation
 
 The simulation will take much longer than a league simulation due to the complexity of the schedule. Finally, you can plot the result with
 
-`fussballgott.tournament(sim)`
+`fussballgott.plot.tournament(sim)`
