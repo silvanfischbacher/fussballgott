@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="fussballgott",
-    version="0.1.0",
+    version="0.2.1",
     author="Silvan Fischbacher",
     description="A package to simulate football games, leagues and tournaments",
     long_description=long_description,
