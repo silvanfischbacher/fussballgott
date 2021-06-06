@@ -86,7 +86,7 @@ def simulate(mode, ko_round, teams, groups, n_sim=1,
                 if dict_group[t] in sorted(group):
                     for c in special_rule.columns:
                         if special_rule[c].values[0] == dict_group[t]:
-                            dict_ko['3'+c] = t
+                            dict_ko[c] = t
         rounds_left -= 1
 
         #####################
