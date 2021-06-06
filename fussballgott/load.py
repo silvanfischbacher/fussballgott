@@ -8,17 +8,19 @@ def get_teams_from_df(df, columns=['Home','Away']):
     teams = np.concatenate(teams)
     return np.unique(teams)
 
-def load(files, style='league', delimiter=';'):
-    if style=='league':
+def league(files, delimiter=';'):
+    if (len(files)==1 or isinstance(files, str)):
         schedule_and_results = pd.read_csv(files, delimiter=delimiter, encoding= 'unicode_escape')
         schedule = schedule_and_results[['Home','Away']].copy()
         teams = get_teams_from_df(schedule_and_results)
         table, missing_games = create_table(schedule_and_results, teams)
-    if style=='league_sep':
+    elif len(files)==2:
         schedule = pd.read_csv(files[0], delimiter=delimiter, encoding= 'unicode_escape')
         table = pd.read_csv(files[1], delimiter=delimiter, encoding= 'unicode_escape', index_col=0)
         teams = get_teams_from_df(table, ['Team'])
         missing_games = get_missing_games(table, schedule)
+    else:
+        print('files has wrong type, should be list, array or str')
     teams_dict = {}
     for t in teams:
         teams_dict[t] = team.team(name = t, GoalsF = table[table['Team'] == t]['GF'].values[0],
@@ -26,6 +28,41 @@ def load(files, style='league', delimiter=';'):
                              played = table[table['Team'] == t]['Played'].values[0],
                              penalty_scoring = 0.75)
     return teams_dict, schedule, table, missing_games
+
+def tournament(filename, path = '', delimiter = ';'):
+    mode = pd.read_csv(path+filename+'mode.CSV', header=None, index_col=0, squeeze=True, delimiter=';').to_dict()
+    ko = int(mode['First knockout round'])
+    ko_round = []
+    while ko>1:
+        ko_round.append(pd.read_csv(path+filename+'{}.CSV'.format(ko), delimiter = delimiter))
+        ko = int(ko/2)
+    if int(mode['number of additional teams qualified']) > 0:
+        ko_round.append(pd.read_csv(path+filename+'special_rule.CSV', delimiter = delimiter))
+    team_table = pd.read_csv(path+filename+'teams.csv', delimiter=';')
+    teams = {}
+    groups = dict.fromkeys(team_table['Group'])
+
+    def update_group(dic, k, value):
+        a = dic[k]
+        if a == None:
+            return [value]
+        else:
+            a.append(value)
+        return a
+
+    for name in team_table['Name'].values:
+        try:
+            penalty = team_table[team_table['Name']==name]['Penalty Scoring'].values[0]
+        except:
+            penalty = 0.75
+        teams[name]= team.team(name=name,
+                               GoalsF=team_table[team_table['Name']==name]['GoalsF'].values[0],
+                               GoalsA=team_table[team_table['Name']==name]['GoalsA'].values[0],
+                               played=team_table[team_table['Name']==name]['Played'].values[0],
+                               penalty_scoring=penalty)
+        g = team_table[team_table['Name']==name]['Group'].values[0]
+        groups[g] = update_group(groups, g, name)
+    return mode, ko_round, teams, groups
 
 def enrich_table(table):
     if 'GD' not in table.index:

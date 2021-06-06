@@ -42,4 +42,4 @@ Y,88888888b, ,adP\"'             \"\"Y888888P\"                  888888'
 print(asci_art)
 
 import os
-from . import fussball, load, team, league, plot
+from . import fussball, load, team, league, plot, tournament

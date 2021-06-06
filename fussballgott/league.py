@@ -4,26 +4,49 @@ File with all functions needed to simulate a league
 from fussballgott import fussball
 import numpy as np, pandas as pd
 from tqdm import trange
+from itertools import combinations, permutations
 
 def simulate(teams, schedule = 2, table = None, missing_games = None,
-             n_sim=1, include_goals_against = True, sorting = 'standard'):
+             n_sim=1, include_goals_against = True, sorting = 'standard',
+             progressbar = True, tournament_mode = False):
+    team_list = teams.keys()
     if isinstance(schedule, int):
-        print('WARNING: self made schedules not implemented yet')
+        if schedule%2==0:
+            one_round = pd.DataFrame(list(permutations(teams, 2)),columns=['Home','Away'])
+            sch = one_round
+            while schedule>2:
+                sch = sch.append(one_round, ignore_index=True)
+                schedule -= 2
+        else:
+            one_round = pd.DataFrame(list(combinations(teams, 2)),columns=['Home','Away'])
+            sch = one_round
+            while schedule>1:
+                sch = sch.append(one_round, ignore_index=True)
+                schedule -= 1
+        schedule = sch
+        missing_games = np.ones(schedule.shape[0], dtype = bool)
+
+    if table is None:
+        table = pd.DataFrame(columns = ['Team', 'Played', 'GF', 'GA', 'GD', 'Points'])
+        table['Team'] = team_list
+        table = table.fillna(0)
+        table.index = np.arange(1, len(team_list)+1)
     n_sim = int(n_sim)
     n_teams = len(teams)
     sched, tab, dict_num2team = pd_to_np(schedule, table)
     ranking_table = np.zeros((n_teams, n_teams))
-    for i in trange(n_sim):
+    for i in trange(n_sim, disable = not progressbar):
         changed_table = simulate_once(sched, tab, teams, missing_games,
                                       dict_num2team, include_goals_against)
-        if sorting == 'standard':
-            changed_table = changed_table[changed_table[:, 1].argsort()] #sort GF
-            changed_table = changed_table[(changed_table[:, 1]-changed_table[:,2]).argsort(kind='mergesort')] #sort GD
-            changed_table = changed_table = changed_table[changed_table[:, 3].argsort(kind='mergesort')] #sort points
-            ranking = np.flip(changed_table[:,-1])
+
+        changed_table, ranking = fussball.sort(changed_table, sorting=sorting)
+
         for j in range(n_teams):
             ranking_table[int(ranking[j]), j] += 1
-    return np_to_pd(ranking_table/n_sim, dict_num2team)
+    if tournament_mode:
+        return changed_table, dict_num2team
+    else:
+        return np_to_pd(ranking_table/n_sim, dict_num2team)
 
 def simulate_once(schedule, table, teams, missing_games, dict_num2team, include_goals_against = True):
     changed_table=table.copy()

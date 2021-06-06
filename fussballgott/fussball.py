@@ -1,7 +1,7 @@
 import numpy as np
 from tqdm import trange
 
-def simulate_game_wo_overtime(AvGoalsF1, AvGoalsF2, AvGoalsA1, AvGoalsA2,
+def simulate_game_wo_overtime(AvGoalsF1, AvGoalsF2, AvGoalsA1=1, AvGoalsA2=1,
                               include_goals_against=False, multiplier = 1):
     if include_goals_against:
         home = np.random.poisson(multiplier*(AvGoalsF1+AvGoalsA2)/2)
@@ -19,7 +19,7 @@ def penalty_shootout(penalty_scoring1, penalty_scoring2):
         away += sum(np.random.rand(1)<penalty_scoring2)
     return home, away
 
-def simulate_game(AvGoalsF1, AvGoalsF2, AvGoalsA1, AvGoalsA2,
+def simulate_game(AvGoalsF1, AvGoalsF2, AvGoalsA1=1, AvGoalsA2=1,
                   include_goals_against=False, extra_time = False,
                   penalty_scoring1 = 0.75, penalty_scoring2= 0.75,
                   return_when = False):
@@ -66,3 +66,12 @@ def simulate_game_stats(AvGoalsF1, AvGoalsF2, AvGoalsA1, AvGoalsA2, n_sim = 1e5,
         table[min(home,10), min(away,10)] += 1
 
     return table/n_sim, win_prob/n_sim
+
+def sort(table, sorting='standard'):
+    if sorting == 'standard':
+        table = table[table[:, 1].argsort()] #sort GF
+        table = table[(table[:, 1]-table[:,2]).argsort(kind='mergesort')] #sort GD
+        table = table[table[:, 3].argsort(kind='mergesort')] #sort points
+        table = np.flip(table, axis=0)
+        ranking = table[:,-1]
+    return table, ranking
