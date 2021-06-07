@@ -21,7 +21,7 @@ You find an example notebook at `demos/single_games/demo_single_games.ipynb`
 
 * Average Goals for the team per game: `AvGoalsF1, AvGoalsF2`
 
-* Average Goals against the team (optional, default=1): `AvGoalsF1, AvGoalsF2`
+* Average Goals against the team (optional, default=1): `AvGoalsA1, AvGoalsA2`
 
 * Should goals against the team be included in the simulation? (optional, default=False): `include_goals_against`
 
