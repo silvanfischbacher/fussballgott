@@ -19,6 +19,22 @@ def penalty_shootout(penalty_scoring1, penalty_scoring2):
         away += sum(np.random.rand(1)<penalty_scoring2)
     return home, away
 
+def simulate_game_from_teams(team1, team2, include_goals_against=False,
+                             extra_time = False, return_when = False):
+    return simulate_game(AvGoalsF1 = team1.AvGoalsF, AvGoalsF2 = team2.AvGoalsF,
+                         AvGoalsA1 = team1.AvGoalsA, AvGoalsA2 = team2.AvGoalsA,
+                         include_goals_against = include_goals_against, extra_time = extra_time,
+                         penalty_scoring1 = team1.penalty_scoring, penalty_scoring2 = team2.penalty_scoring,
+                         return_when = return_when)
+
+def simulate_game_stats_from_teams(team1, team2, include_goals_against=False,
+                                   extra_time = False, return_when = False, n_sim = 1e5):
+    return simulate_game_stats(AvGoalsF1 = team1.AvGoalsF, AvGoalsF2 = team2.AvGoalsF,
+                               AvGoalsA1 = team1.AvGoalsA, AvGoalsA2 = team2.AvGoalsA,
+                               include_goals_against = include_goals_against, extra_time = extra_time,
+                               penalty_scoring1 = team1.penalty_scoring, penalty_scoring2 = team2.penalty_scoring,
+                               n_sim = n_sim)
+
 def simulate_game(AvGoalsF1, AvGoalsF2, AvGoalsA1=1, AvGoalsA2=1,
                   include_goals_against=False, extra_time = False,
                   penalty_scoring1 = 0.75, penalty_scoring2= 0.75,
