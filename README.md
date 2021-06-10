@@ -58,7 +58,7 @@ There are three ways of simulating a league:
 ```
 teams = {}
 teams['GCZ'] = team.team(name='GCZ', GoalsF=3.1, GoalsA=0.9)
-teams['YB'] = team.team(name='FCB', GoalsF=2.3, GoalsA=1.7)
+teams['YB'] = team.team(name='YB', GoalsF=2.3, GoalsA=1.7)
 teams['FCB'] = team.team(name='FCB', GoalsF=2, GoalsA=3.2)
 teams['FCZ'] = team.team(name='FCZ', GoalsF=1, GoalsA=4.3)
 ```
