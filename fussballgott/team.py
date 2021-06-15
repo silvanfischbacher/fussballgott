@@ -11,6 +11,12 @@ class team(object):
         self.GoalsF = GoalsF
         self.GoalsA = GoalsA
         self.played = played
-        self.AvGoalsF = self.GoalsF / self.played
-        self.AvGoalsA = self.GoalsA / self.played
         self.penalty_scoring = penalty_scoring
+
+    @property
+    def AvGoalsF(self):
+         return self.GoalsF / self.played
+
+    @property
+    def AvGoalsA(self):
+        return self.GoalsA / self.played
