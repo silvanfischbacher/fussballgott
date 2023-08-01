@@ -1,0 +1,36 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      #- main  # Change this to the main branch name of your repository
+
+jobs:
+  build_and_publish_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.x  # Replace '3.x' with the desired Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip setuptools
+          python -m pip install -e .[docs]
+
+      - name: Build documentation
+        run: |
+          cd docs
+          sphinx-build -b html . _build/html
+
+      - name: Publish documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html
+
+      # Add other steps, if needed, such as running tests, linting, etc.
