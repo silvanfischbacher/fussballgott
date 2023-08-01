@@ -7,15 +7,13 @@ on:
 jobs:
   check_style:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['16']  # Add the 'node-version' option with value '16'
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.x  # Replace '3.x' with the desired Python version
 
@@ -29,16 +27,12 @@ jobs:
   test_code:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: ['16']  # Add the 'node-version' option with value '16'
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.x  # Replace '3.x' with the desired Python version
 
