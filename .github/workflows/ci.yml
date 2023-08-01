@@ -7,14 +7,12 @@ on:
 jobs:
   check_style:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16']  # Add the 'node-version' option with value '16'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Set Node.js version to 16
 
       - name: Install Python
         uses: actions/setup-python@v2
@@ -30,14 +28,14 @@ jobs:
 
   test_code:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['16']  # Add the 'node-version' option with value '16'
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Set Node.js version to 16
 
       - name: Install Python
         uses: actions/setup-python@v2
