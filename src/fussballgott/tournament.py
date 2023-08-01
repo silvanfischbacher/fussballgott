@@ -1,11 +1,8 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
-"""
-File with all functions needed to simulate a league
-"""
 import numpy as np
 import pandas as pd
-from tqdm import trange
+from tqdm.auto import trange
 
 from fussballgott import fussball, league
 
@@ -21,6 +18,20 @@ def simulate(
     small_final=False,
     progressbar=True,
 ):
+    """
+    Simulate a tournament with given teams and schedule.
+
+    :param mode: Dictionary with the mode of the tournament
+    :param ko_round: List of pandas DataFrames with the knockout rounds
+    :param teams: Dictionary with teams as keys and team objects as values
+    :param groups: Dictionary with groups as keys and teams as values
+    :param n_sim: Number of simulations
+    :param include_goals_against: If True, the average goals against are included
+    :param sorting: Sorting of the table
+    :param small_final: If True, the tournament ends has a small final
+    :param progressbar: If True, a progressbar is shown
+    :return: simlated tournament table
+    """
     n_sim = int(n_sim)
 
     if mode["Group Stage"] == "True":
@@ -28,10 +39,7 @@ def simulate(
     elif mode["Group Stage"] == "False":
         group_stage = False
     else:
-        print(
-            "Don't know {} in the mode file for 'Group Stage'. "
-            "Use 'True' or 'False'.".format(mode["Group Stage"])
-        )
+        raise ValueError("Group Stage must be defined as True or False")
 
     first_ko = int(mode["First knockout round"])
     if group_stage:

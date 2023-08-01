@@ -3,7 +3,7 @@ name: Documentation
 on:
   push:
     branches:
-      #- main  # Change this to the main branch name of your repository
+      - main  # Change this to the main branch name of your repository
 
 jobs:
   build_and_publish_docs:

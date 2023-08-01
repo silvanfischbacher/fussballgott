@@ -9,7 +9,9 @@ Contents:
 
    installation
    usage
-   tutorial
+   tutorial_single_game/tutorial_single_game
+   tutorial_league/tutorial_league
+   tutorial_tournament/tutorial_tournament
    fussballgott
    modules
    contributing

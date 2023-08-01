@@ -6,6 +6,12 @@ import seaborn as sns
 
 
 def league(sim):
+    """
+    Plot the league table in a heatmap.
+
+    :param sim: DataFrame with the simulation results
+    """
+
     cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", ["white", "green"])
     plt.figure(figsize=(11, 10))
     ax = sns.heatmap(
@@ -22,6 +28,14 @@ def league(sim):
 
 
 def tournament(sim, sort_for=None, save=None, prob_style="standard"):
+    """
+    Plot the tournament table in a heatmap.
+
+    :param sim: DataFrame with the simulation results
+    :param sort_for: Column to sort for
+    :param save: Path to save the plot
+    :param prob_style: "standard" or "cumulative"
+    """
     if prob_style == "standard":
         sim = sim
     elif prob_style == "cumulative":
@@ -54,6 +68,15 @@ def tournament(sim, sort_for=None, save=None, prob_style="standard"):
 
 
 def game_stat(sim, winprob=None, team1="home", team2="away"):
+    """
+    Plot the game statistics in a heatmap.
+
+    :param sim: DataFrame with the simulation results
+    :param winprob: Array with the win probabilities
+    :param team1: Name of the first team
+    :param team2: Name of the second team
+    """
+
     cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", ["white", "green"])
     plt.figure(figsize=(11, 10))
     ax = sns.heatmap(
