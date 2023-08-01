@@ -1,6 +1,6 @@
 # FUSSBALLGOTT
 
-![example workflow](https://github.com/github/fussballgott/actions/workflows/ci.yml/badge.svg)
+![example workflow](https://github.com/silvanfischbacher/fussballgott/actions/workflows/ci.yml/badge.svg)
 
                          ___
      o__        o__     |   |\
