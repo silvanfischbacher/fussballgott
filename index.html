@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FUSSBALLGOTT &mdash; fussballgott 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'0.1.0',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fussballgott 0.1.0 documentation" href="#"/>
+        <link rel="next" title="Installation" href="installation.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+          <a href="#" class="icon icon-home"> fussballgott</a>
+        <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">0.1.0 (2023-05-28)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="/">fussballgott</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="#">Docs</a> &raquo;</li>
+  <li><a href="">FUSSBALLGOTT</a></li>
+  
+</ul>
+<hr/>
+
+          
+  <section id="fussballgott">
+<h1>FUSSBALLGOTT<a class="headerlink" href="#fussballgott" title="Permalink to this heading">¶</a></h1>
+<p><img alt="example workflow" src="https://github.com/silvanfischbacher/fussballgott/actions/workflows/ci.yml/badge.svg" /></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                     ___
+ o__        o__     |   |\
+/|          /\      |   |X\
+/ &gt; o        &lt;\     |   |XX\
+</pre></div>
+</div>
+<p>This repository provides all important functions to simulate football games, leagues or tournaments.</p>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
+<section id="single-games">
+<h2>Single games<a class="headerlink" href="#single-games" title="Permalink to this heading">¶</a></h2>
+<p>You find an example notebook at <code class="docutils literal notranslate"><span class="pre">demos/single_games/demo_single_games.ipynb</span></code></p>
+<ol class="arabic simple">
+<li><p>Import the fussballgott package</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">fussballgott</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>To simulate one game, you need the following information of both teams:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Average Goals for the team per game: <code class="docutils literal notranslate"><span class="pre">AvGoalsF1,</span> <span class="pre">AvGoalsF2</span></code></p></li>
+<li><p>Average Goals against the team (optional, default=1): <code class="docutils literal notranslate"><span class="pre">AvGoalsA1,</span> <span class="pre">AvGoalsA2</span></code></p></li>
+<li><p>Should goals against the team be included in the simulation? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">include_goals_against</span></code></p></li>
+<li><p>Will there be extra time and penalty shootout in case of a draw? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">extra_time</span></code></p></li>
+<li><p>What is the chance of the team to score in a penalty (for penalty_shootout)? (optional, default=0.75): <code class="docutils literal notranslate"><span class="pre">penalty_scoring1,</span> <span class="pre">penalty_scoring2</span></code></p></li>
+<li><p>Should the function return when the game was over (only relevant for extra time)? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">when</span></code></p></li>
+</ul>
+<p>Then, you can run the simulation by</p>
+<p><code class="docutils literal notranslate"><span class="pre">home,</span> <span class="pre">away</span> <span class="pre">=</span> <span class="pre">fussballgott.fussball.simulate_game(AvGoalsF1,</span> <span class="pre">AvGoalsF2,</span> <span class="pre">...)</span></code></p>
+<p>and you get the result of the simulated game home:away. If you set <code class="docutils literal notranslate"><span class="pre">return_when</span> <span class="pre">=</span> <span class="pre">True</span></code>, you will get</p>
+<p><code class="docutils literal notranslate"><span class="pre">home,</span> <span class="pre">away,</span> <span class="pre">when,</span> <span class="pre">home90,</span> <span class="pre">away90</span> <span class="pre">=</span> <span class="pre">fussballgott.fussball.simulate_game(AvGoalsF1,</span> <span class="pre">AvGoalsF2,</span> <span class="pre">...)</span></code></p>
+<p>with <code class="docutils literal notranslate"><span class="pre">home90:away90</span></code> the result after 90 minutes and <code class="docutils literal notranslate"><span class="pre">home:away</span></code> after extra_time or penalty_shootout. The parameter <code class="docutils literal notranslate"><span class="pre">when</span></code> tells you when the game was decided: <code class="docutils literal notranslate"><span class="pre">reg</span></code> for regular time, <code class="docutils literal notranslate"><span class="pre">AET</span></code> after extra time, <code class="docutils literal notranslate"><span class="pre">PSO</span></code> after penalty shootout.</p>
+<p>If you want have a statistic of the game, you can use</p>
+<p><code class="docutils literal notranslate"><span class="pre">stat,</span> <span class="pre">win_prob</span> <span class="pre">=</span> <span class="pre">fussballgott.fussball.simulate_games_stats(AvGoalsF1,</span> <span class="pre">AvGoalsF2,</span> <span class="pre">...,</span> <span class="pre">n_sim</span> <span class="pre">=</span> <span class="pre">1e5)</span></code></p>
+<p>This runs the simulation <code class="docutils literal notranslate"><span class="pre">n_sim</span></code> times and returns the probability of each result as well as the winning probability of each team.</p>
+</section>
+<section id="leagues">
+<h2>Leagues<a class="headerlink" href="#leagues" title="Permalink to this heading">¶</a></h2>
+<p>You find an example notebook at <code class="docutils literal notranslate"><span class="pre">demos/league/demo_leagues.ipynb</span></code></p>
+<p>There are three ways of simulating a league:</p>
+<ol class="arabic simple">
+<li><p>Full simulation: Most convenient for simulation at the beginning of a season. For doing that, you have to initialize the team strengths first by creating a dictionary where you create for each team a teamclass object:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">teams</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;GCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;GCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;YB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;YB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">1.7</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">4.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you can run the simulation using</p>
+<p><code class="docutils literal notranslate"><span class="pre">fussballgott.league.simulate(teams,</span> <span class="pre">schedule</span> <span class="pre">=</span> <span class="pre">4,</span> <span class="pre">n_sim</span> <span class="pre">=</span> <span class="pre">1e5)</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">schedule</span></code> determines how many times each team play against the other teams.</p>
+<ol class="arabic simple" start="2">
+<li><p>Simulation from schedule: Most convenient for simulation that you repeat every week after games are played. For that, you have to create a CSV file with the full schedule and the results of the games played so far. You can load this by</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">teams,</span> <span class="pre">schedule,</span> <span class="pre">table,</span> <span class="pre">missing_games</span> <span class="pre">=</span> <span class="pre">fussballgott.load.league('file.CSV')</span></code></p>
+<p>This initializes the teams dictionary, loads the schedule, current table and an array for the missing games. The simulation is then done by using</p>
+<p><code class="docutils literal notranslate"><span class="pre">sim</span> <span class="pre">=</span> <span class="pre">fussballgott.league.simulate(teams,</span> <span class="pre">schedule,</span> <span class="pre">table,</span> <span class="pre">missing_games,</span> <span class="pre">n_sim</span> <span class="pre">=</span> <span class="pre">1e5)</span></code></p>
+<p>And you can plot the result using <code class="docutils literal notranslate"><span class="pre">plot.league(sim)</span></code>. You can find an example CSV-file at <code class="docutils literal notranslate"><span class="pre">demos/league/demo_league.CSV</span></code>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Simulation from schedule and current table: Most convenient for simulation of an ongoing season that won’t be repeated weekly. For that, you have to create two CSV file: One with the full schedule and one with the current table. You can load this by</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">teams,</span> <span class="pre">schedule,</span> <span class="pre">table,</span> <span class="pre">missing_games</span> <span class="pre">=</span> <span class="pre">fussballgott.load.league(['schedule.CSV',</span> <span class="pre">'table.CSV'])</span></code></p>
+<p>This initializes the teams dictionary, loads the schedule, current table and an array for the missing games (assuming the games took place from the top of the schedule in order). The simulation is then done by using</p>
+<p><code class="docutils literal notranslate"><span class="pre">sim</span> <span class="pre">=</span> <span class="pre">fussballgott.league.simulate(teams,</span> <span class="pre">schedule,</span> <span class="pre">table,</span> <span class="pre">missing_games,</span> <span class="pre">n_sim</span> <span class="pre">=</span> <span class="pre">1e5)</span></code></p>
+<p>And you can plot the result using <code class="docutils literal notranslate"><span class="pre">plot.league(sim)</span></code>. You can find example CSV-files at <code class="docutils literal notranslate"><span class="pre">demos/league/demo_league_sep_schedule.CSV</span></code> and <code class="docutils literal notranslate"><span class="pre">demos/league/demo_league_sep_table.CSV</span></code>.</p>
+</section>
+<section id="tournaments">
+<h2>Tournaments<a class="headerlink" href="#tournaments" title="Permalink to this heading">¶</a></h2>
+<p>You find an example notebook at <code class="docutils literal notranslate"><span class="pre">demos/tournament/demo_tournament.ipynb</span></code> that uses the European Championship in 2021.</p>
+<ol class="arabic simple">
+<li><p>To simulate tournaments like the World Cup or the European Championship, you have to set up a few CSV files to describe the match plan. Examples of such files can be found at <code class="docutils literal notranslate"><span class="pre">demos/tournament/</span></code>. The files should all be in the same folder and start with the same name, in the demo case <code class="docutils literal notranslate"><span class="pre">demo_tournament_</span></code>. The endings of the files have to match the following description. Ideally, you use the demo_tournament files and insert new numbers. You need</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode.CSV</span></code>: This file contains general information about the mode of the tournament, like first knockout round (Eighty Finals=8, Quarter Finals=4, etc.), the amount of games against each opponent in group stage (typically 1), the number of teams that are qualified per group (typically 2), number of additional teams that are qualified due to a special rule (typically 0 for World Cups, 4 for European Championship where the 4 best 3rd of each group still qualify) and the path where the game plan distribution for this additionally qualified teams would be found if necessarry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">teams.CSV</span></code>: Defining all teams, the group they belong to and the Goals that they have scored and received (e.g. in the qualifiers) and the number of games that they’ve played. To directly plug in the number of goals per match, set Played to 1. Optionally, you can also adjust penalty scoring strenght in this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2.CSV</span></code>, <code class="docutils literal notranslate"><span class="pre">4.CSV</span></code>, etc. : Defining which team plays against which team in the knockout rounds. In the first knockout round, the name of the team is given by the rank followed by the group. So the 1st of group A would be <code class="docutils literal notranslate"><span class="pre">1A</span></code>. For later rounds, the game number of the previous round is sufficient.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">special_rule.CSV</span></code>: Defining allocation of additionally qualified teams to the first knockout round.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Load all the CSV files by</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">mode,</span> <span class="pre">ko_round,</span> <span class="pre">teams,</span> <span class="pre">groups</span> <span class="pre">=</span> <span class="pre">fussballgott.load.tournament('demo_tournament_')</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">demo_tournament_</span></code> is the prefix of all your CSV files. Let the simulation run by</p>
+<p><code class="docutils literal notranslate"><span class="pre">sim</span> <span class="pre">=</span> <span class="pre">tournament.simulate(mode,</span> <span class="pre">ko_round,</span> <span class="pre">teams,</span> <span class="pre">groups,</span> <span class="pre">n_sim</span> <span class="pre">=</span> <span class="pre">1e4)</span></code></p>
+<p>The simulation will take much longer than a league simulation due to the complexity of the schedule. Finally, you can plot the result with</p>
+<p><code class="docutils literal notranslate"><span class="pre">fussballgott.plot.tournament(sim)</span></code></p>
+</section>
+</section>
+<section id="contents">
+<h1>Contents:<a class="headerlink" href="#contents" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">0.1.0 (2023-05-28)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="feedback">
+<h1>Feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">¶</a></h1>
+<p>If you have any suggestions or questions about <strong>fussballgott</strong> feel free to email me
+at <a class="reference external" href="mailto:silvan&#46;fischbacher&#37;&#52;&#48;greenmail&#46;ch">silvan<span>&#46;</span>fischbacher<span>&#64;</span>greenmail<span>&#46;</span>ch</a>.</p>
+<p>If you encounter any errors or problems with <strong>fussballgott</strong>, please let me know!</p>
+</section>
+<section id="code-coverage-report">
+<h1>Code Coverage Report<a class="headerlink" href="#code-coverage-report" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="./htmlcov/index.html">html report</a></p>
+</section>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2021, Silvan Fischbacher.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> based on <a href="http://readthedocs.org">Read the Docs</a> customized by J. Akeret, L. Gamper, A. Amara and U. Schmitt
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>
