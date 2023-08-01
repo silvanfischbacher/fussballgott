@@ -1,6 +1,13 @@
-from __future__ import absolute_import
+__author__ = "Silvan Fischbacher"
+__email__ = "silvan.fischbacher@greenmail.ch"
+__credits__ = ["Silvan Fischbacher"]
 
-print('WELCOME TO THE FUSSBALLGOTT PACKAGE')
+__version__ = "0.1.0"
+
+
+from . import fussball, league, load, plot, team, tournament  # noqa
+
+print("WELCOME TO THE FUSSBALLGOTT PACKAGE")
 
 asci_art = """
                        _,aaadP\"\"\"\"\"\"Ybaaaa,,_
@@ -38,8 +45,5 @@ Y,88888888b, ,adP\"'             \"\"Y888888P\"                  888888'
                          ``\"\"\"\"\"\"\"\"\"\"\"\"\"''
 
 """
-#Thanks to Normand Veilleux for the asci art
+# Thanks to Normand Veilleux for the asci art
 print(asci_art)
-
-import os
-from . import fussball, load, team, league, plot, tournament
