@@ -106,7 +106,7 @@ def test_simulate_league():
 
 
 def test_simulate_league_from_schedule():
-    file = _get_abspath("test_csv_files/demo_league.csv")
+    file = _get_abspath("test_csv_files/demo_league.CSV")
     teams, schedule, table, missing_games = load.league(file)
     sim = league.simulate(teams, schedule, table, missing_games, n_sim=1e5)
     assert sim.index[0] == "GCZ"
