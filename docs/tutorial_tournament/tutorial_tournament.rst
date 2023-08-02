@@ -26,6 +26,8 @@ Then, we have to prepare the data. This requires the following steps:
       :header-rows: 1
       :delim: ;
 
+  If the tournament does not have groups, the column ``group`` can be omitted.
+
 3. Setup the knockout round with a file for each round. The file format for the first
    knockout round is as follows:
 
@@ -34,6 +36,8 @@ Then, we have to prepare the data. This requires the following steps:
       :header-rows: 1
       :delim: ;
 
+  If the tournament does not have a group stage, instead of 1A, 2B, etc., you should
+  directly put the names of the teams.
   The file format for the second knockout round is as follows:
 
   .. csv-table:: tournament_4.CSV

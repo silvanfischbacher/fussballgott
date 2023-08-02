@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+import os
 
 from fussballgott import team
 
@@ -61,7 +62,7 @@ def league(files, delimiter=";"):
     # create the team classes
     teams_dict = {}
     for t in teams:
-        teams_dict[t] = team.team(
+        teams_dict[t] = team.Team(
             name=t,
             GoalsF=table[table["Team"] == t]["GF"].values[0],
             GoalsA=table[table["Team"] == t]["GA"].values[0],
@@ -93,10 +94,10 @@ def tournament(filename, path="", delimiter=";"):
     # read out the mode files
     mode = (
         pd.read_csv(
-            path + filename + "mode.CSV",
+            os.path.join(path, filename + "mode.CSV"),
             header=None,
             index_col=0,
-            delimiter=";",
+            delimiter=delimiter,
         )
         .squeeze()
         .to_dict()
@@ -115,7 +116,9 @@ def tournament(filename, path="", delimiter=";"):
     ko_round = []
     while ko > 1:
         ko_round.append(
-            pd.read_csv(path + filename + "{}.CSV".format(ko), delimiter=delimiter)
+            pd.read_csv(
+                os.path.join(path, filename + "{}.CSV".format(ko)), delimiter=delimiter
+            )
         )
         ko = int(ko / 2)
 
@@ -123,13 +126,18 @@ def tournament(filename, path="", delimiter=";"):
     try:
         if int(mode["number of additional teams qualified"]) > 0:
             ko_round.append(
-                pd.read_csv(path + filename + "special_rule.CSV", delimiter=delimiter)
+                pd.read_csv(
+                    os.path.join(path, filename + "special_rule.CSV"),
+                    delimiter=delimiter,
+                )
             )
     except Exception:
         pass
 
     # build the team table
-    team_table = pd.read_csv(path + filename + "teams.csv", delimiter=";")
+    team_table = pd.read_csv(
+        os.path.join(path, filename + "teams.CSV"), delimiter=delimiter
+    )
     teams = {}
     if group_stage:
         groups = dict.fromkeys(team_table["Group"])
@@ -151,7 +159,7 @@ def tournament(filename, path="", delimiter=";"):
             ]
         except Exception:
             penalty = 0.75
-        teams[name] = team.team(
+        teams[name] = team.Team(
             name=name,
             GoalsF=team_table[team_table["Name"] == name]["GoalsF"].values[0],
             GoalsA=team_table[team_table["Name"] == name]["GoalsA"].values[0],
@@ -166,18 +174,6 @@ def tournament(filename, path="", delimiter=";"):
         return mode, ko_round, teams, groups
     else:
         return mode, ko_round, teams
-
-
-def enrich_table(table):
-    """
-    Enrich the table with the missing columns Goal Difference
-
-    :param table: Table to be enriched
-    :return: Enriched table
-    """
-    if "GD" not in table.index:
-        table["GD"] = table["GF"] - table["GA"]
-    return table
 
 
 def create_table(sched_n_r, teams):
@@ -204,6 +200,26 @@ def create_table(sched_n_r, teams):
             pass
         else:
             missing_games[i] = False
+            table.loc[game["Home"].values[0], "Played"] += 1
+            table.loc[game["Away"].values[0], "Played"] += 1
+            table.loc[game["Home"].values[0], "GF"] += game["Goals Home"].values[0]
+            table.loc[game["Away"].values[0], "GF"] += game["Goals Away"].values[0]
+            table.loc[game["Home"].values[0], "GA"] += game["Goals Away"].values[0]
+            table.loc[game["Away"].values[0], "GA"] += game["Goals Home"].values[0]
+            table.loc[game["Home"].values[0], "GD"] += (
+                game["Goals Home"].values[0] - game["Goals Away"].values[0]
+            )
+            table.loc[game["Away"].values[0], "GD"] += (
+                game["Goals Away"].values[0] - game["Goals Home"].values[0]
+            )
+            if game["Goals Home"].values[0] > game["Goals Away"].values[0]:
+                table.loc[game["Home"].values[0], "Points"] += 3
+            if game["Goals Home"].values[0] < game["Goals Away"].values[0]:
+                table.loc[game["Away"].values[0], "Points"] += 3
+            if game["Goals Home"].values[0] == game["Goals Away"].values[0]:
+                table.loc[game["Home"].values[0], "Points"] += 1
+                table.loc[game["Away"].values[0], "Points"] += 1
+            """
             table["Played"][game["Home"].values[0]] += 1
             table["Played"][game["Away"].values[0]] += 1
             table["GF"][game["Home"].values[0]] += game["Goals Home"].values[0]
@@ -217,7 +233,8 @@ def create_table(sched_n_r, teams):
             if game["Goals Home"].values[0] == game["Goals Away"].values[0]:
                 table["Points"][game["Home"].values[0]] += 1
                 table["Points"][game["Away"].values[0]] += 1
-    table["GD"] = table["GF"] - table["GA"]
+            """
+            table["GD"] = table["GF"] - table["GA"]
     sorted_table = tiebreaker(table, rule="Goal Difference")
     sorted_table.index = np.arange(1, len(teams) + 1)
     return sorted_table, missing_games

@@ -41,7 +41,7 @@ def tournament(sim, sort_for=None, save=None, prob_style="standard"):
     elif prob_style == "cumulative":
         sim = sim.iloc[:, ::-1].cumsum(axis=1).iloc[:, ::-1]
     else:
-        print(
+        raise ValueError(
             'prob_style {} is not implemented, use "standard" or'
             ' "cumulative"'.format(prob_style)
         )

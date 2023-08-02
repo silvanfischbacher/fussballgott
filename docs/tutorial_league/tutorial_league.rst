@@ -23,10 +23,10 @@ of times each team plays each other (`schedule=4`).
 .. code:: ipython3
 
     teams = {}
-    teams["GCZ"] = team.team(name="GCZ", GoalsF=3.1, GoalsA=0.9)
-    teams["YB"] = team.team(name="FCB", GoalsF=2.3, GoalsA=1.7)
-    teams["FCB"] = team.team(name="FCB", GoalsF=2, GoalsA=3.2)
-    teams["FCZ"] = team.team(name="FCZ", GoalsF=1, GoalsA=4.3)
+    teams["GCZ"] = team.Team(name="GCZ", GoalsF=3.1, GoalsA=0.9)
+    teams["YB"] = team.Team(name="FCB", GoalsF=2.3, GoalsA=1.7)
+    teams["FCB"] = team.Team(name="FCB", GoalsF=2, GoalsA=3.2)
+    teams["FCZ"] = team.Team(name="FCZ", GoalsF=1, GoalsA=4.3)
 
     sim = league.simulate(teams, schedule=4, n_sim=1e5)
 

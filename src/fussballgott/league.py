@@ -47,7 +47,7 @@ def simulate(
             )
             sch = one_round
             while schedule > 2:
-                sch = sch.append(one_round, ignore_index=True)
+                sch = pd.concat([sch, one_round], ignore_index=True)
                 schedule -= 2
         else:
             one_round = pd.DataFrame(
@@ -55,7 +55,7 @@ def simulate(
             )
             sch = one_round
             while schedule > 1:
-                sch = sch.append(one_round, ignore_index=True)
+                sch = pd.concat([sch, one_round], ignore_index=True)
                 schedule -= 1
         schedule = sch
         missing_games = np.ones(schedule.shape[0], dtype=bool)

@@ -1,7 +1,7 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
 
-class team(object):
+class Team(object):
     """
     Class for a team.
 

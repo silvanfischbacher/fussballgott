@@ -1,7 +1,7 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
 import numpy as np
-from tqdm import trange
+from tqdm.auto import trange
 
 
 def simulate_game_wo_overtime(

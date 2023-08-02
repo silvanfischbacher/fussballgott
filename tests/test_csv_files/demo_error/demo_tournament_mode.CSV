@@ -1,0 +1,6 @@
+Group Stage;maybe
+First knockout round;8
+Games against each opponent in group stage;1
+number of teams qualified per group;2
+number of additional teams qualified;4
+rule specifiying how additional teams are distributed;demo_tournament_special_rule.csv
