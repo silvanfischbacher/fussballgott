@@ -1,8 +1,10 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
 import os
-from fussballgott import team, league, tournament, plot, fussball, load
+
 import pytest
+
+from fussballgott import fussball, league, load, plot, team, tournament
 
 
 def _get_abspath(file_name):
@@ -143,14 +145,14 @@ def test_simulate_tournament_no_group_stage():
     mode, ko_round, teams = load.tournament(
         "demo_tournament_", path=_get_abspath("test_csv_files/demo_no_group_stage")
     )
-    sim = tournament.simulate(mode, ko_round, teams, n_sim=1e4, small_final=True)
+    tournament.simulate(mode, ko_round, teams, n_sim=1e4, small_final=True)
     with pytest.raises(ValueError):
         load.tournament(
             "demo_tournament_", path=_get_abspath("test_csv_files/demo_error")
         )
     mode["Group Stage"] = "maybe"
     with pytest.raises(ValueError):
-        sim = tournament.simulate(mode, ko_round, teams, n_sim=1e4)
+        tournament.simulate(mode, ko_round, teams, n_sim=1e4)
 
 
 def test_tiebreaker_error():

@@ -1,8 +1,9 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
+import os
+
 import numpy as np
 import pandas as pd
-import os
 
 from fussballgott import team
 
