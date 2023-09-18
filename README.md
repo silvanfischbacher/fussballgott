@@ -1,5 +1,7 @@
 # FUSSBALLGOTT
 
+![example workflow](https://github.com/silvanfischbacher/fussballgott/actions/workflows/test.yml/badge.svg)
+
                          ___
      o__        o__     |   |\
     /|          /\      |   |X\
@@ -29,7 +31,7 @@ You find an example notebook at `demos/single_games/demo_single_games.ipynb`
 
 * What is the chance of the team to score in a penalty (for penalty_shootout)? (optional, default=0.75): `penalty_scoring1, penalty_scoring2`
 
-* Should the function return when the game was over (only relevant for extra time)? (optional, default=False): `return when`
+* Should the function return when the game was over (only relevant for extra time)? (optional, default=False): `return_when`
 
 Then, you can run the simulation by
 
@@ -57,10 +59,10 @@ There are three ways of simulating a league:
 
 ```
 teams = {}
-teams['GCZ'] = team.team(name='GCZ', GoalsF=3.1, GoalsA=0.9)
-teams['YB'] = team.team(name='YB', GoalsF=2.3, GoalsA=1.7)
-teams['FCB'] = team.team(name='FCB', GoalsF=2, GoalsA=3.2)
-teams['FCZ'] = team.team(name='FCZ', GoalsF=1, GoalsA=4.3)
+teams['GCZ'] = team.Team(name='GCZ', GoalsF=3.1, GoalsA=0.9)
+teams['YB'] = team.Team(name='YB', GoalsF=2.3, GoalsA=1.7)
+teams['FCB'] = team.Team(name='FCB', GoalsF=2, GoalsA=3.2)
+teams['FCZ'] = team.Team(name='FCZ', GoalsF=1, GoalsA=4.3)
 ```
 
 Then you can run the simulation using

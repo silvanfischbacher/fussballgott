@@ -1,0 +1,71 @@
+name: pipeline
+
+on:
+  push:  # This will trigger the workflow on every push event
+    # No branch filters specified, so it will run on all branches
+
+jobs:
+  check_style:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.x  # Replace '3.x' with the desired Python version
+
+      - name: Install dependencies
+        run: python -m pip install -U pip setuptools flake8
+
+      - name: Style check
+        run: make style-check
+    continue-on-error: false
+
+  test_code:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]  # List the Python versions you want to test
+
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }} 
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip setuptools
+          python -m pip install tox  # Install tox
+
+      - name: Run tests with tox
+        run: tox
+
+  build_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip setuptools
+          python -m pip install -e .[docs]
+
+      - name: Build documentation
+        run: |
+          cd docs
+          sphinx-build -b html . _build/html

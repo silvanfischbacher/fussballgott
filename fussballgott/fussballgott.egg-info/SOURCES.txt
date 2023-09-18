@@ -1,7 +1,0 @@
-LICENSE
-README.md
-setup.py
-fussballgott/fussballgott.egg-info/PKG-INFO
-fussballgott/fussballgott.egg-info/SOURCES.txt
-fussballgott/fussballgott.egg-info/dependency_links.txt
-fussballgott/fussballgott.egg-info/top_level.txt
