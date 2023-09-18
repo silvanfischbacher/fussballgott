@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fussballgott package &mdash; fussballgott 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'0.1.0',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fussballgott 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="fussballgott" href="modules.html"/>
+        <link rel="prev" title="Tutorial: Tournaments" href="tutorial_tournament/tutorial_tournament.html"/> 
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> fussballgott</a>
+        <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_single_game/tutorial_single_game.html">Tutorial: Single Games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_league/tutorial_league.html">Tutorial: League</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#full-league-simulation">Full League simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule">League from schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule-without-results-and-current-table">League from schedule without results and current table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tournament/tutorial_tournament.html">Tutorial: Tournaments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">fussballgott package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.fussball">fussballgott.fussball module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.league">fussballgott.league module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.load">fussballgott.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.plot">fussballgott.plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.team">fussballgott.team module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott.tournament">fussballgott.tournament module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fussballgott">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">fussballgott</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fussballgott package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">0.1.0 (2023-05-28)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="/">fussballgott</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <ul class="wy-breadcrumbs">
+  <li><a href="index.html">Docs</a> &raquo;</li>
+  <li><a href="">fussballgott package</a></li>
+  
+</ul>
+<hr/>
+
+          
+  <section id="fussballgott-package">
+<h1>fussballgott package<a class="headerlink" href="#fussballgott-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-fussballgott.fussball">
+<span id="fussballgott-fussball-module"></span><h2>fussballgott.fussball module<a class="headerlink" href="#module-fussballgott.fussball" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.penalty_shootout">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">penalty_shootout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">penalty_scoring1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#penalty_shootout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.penalty_shootout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a penalty shootout between two teams with given penalty scoring.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>penalty_scoring1</strong> – Penalty scoring of team 1 (between 0 and 1)</p></li>
+<li><p><strong>penalty_scoring2</strong> – Penalty scoring of team 2 (between 0 and 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>home goals, away goals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.simulate_game">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">simulate_game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AvGoalsF1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsF2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_when</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#simulate_game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.simulate_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a game between two teams with given average goals for and against.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AvGoalsF1</strong> – Average goals for team 1</p></li>
+<li><p><strong>AvGoalsF2</strong> – Average goals for team 2</p></li>
+<li><p><strong>AvGoalsA1</strong> – Average goals against team 1</p></li>
+<li><p><strong>AvGoalsA2</strong> – Average goals against team 2</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>extra_time</strong> – If True, extra time and penalty shootout are included</p></li>
+<li><p><strong>penalty_scoring1</strong> – Penalty scoring of team 1 (between 0 and 1)</p></li>
+<li><p><strong>penalty_scoring2</strong> – Penalty scoring of team 2 (between 0 and 1)</p></li>
+<li><p><strong>return_when</strong> – If True, the result is returned together with the time when
+the game was decided and the result before overtime</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>home goals, away goals</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>when, home goals and away goals after 90 minutes (if return_when=True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.simulate_game_from_teams">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">simulate_game_from_teams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_when</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#simulate_game_from_teams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.simulate_game_from_teams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a game between two teams (with given team classes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>team1</strong> – team class of team 1</p></li>
+<li><p><strong>team2</strong> – team class of team 2</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>extra_time</strong> – If True, extra time and penalty shootout are included</p></li>
+<li><p><strong>return_when</strong> – If True, the result is returned together with the time when
+the game was decided and the result before overtime</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>home goals, away goals</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>when, home goals and away goals after 90 minutes (if return_when=True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.simulate_game_stats">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">simulate_game_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AvGoalsF1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsF2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#simulate_game_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.simulate_game_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate the statistics of a game between two teams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AvGoalsF1</strong> – Average goals for team 1</p></li>
+<li><p><strong>AvGoalsF2</strong> – Average goals for team 2</p></li>
+<li><p><strong>AvGoalsA1</strong> – Average goals against team 1</p></li>
+<li><p><strong>AvGoalsA2</strong> – Average goals against team 2</p></li>
+<li><p><strong>n_sim</strong> – Number of simulations</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>extra_time</strong> – If True, extra time and penalty shootout are included</p></li>
+<li><p><strong>penalty_scoring1</strong> – Penalty scoring of team 1 (between 0 and 1)</p></li>
+<li><p><strong>penalty_scoring2</strong> – Penalty scoring of team 2 (between 0 and 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>table of results, win probabilities</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.simulate_game_stats_from_teams">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">simulate_game_stats_from_teams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#simulate_game_stats_from_teams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.simulate_game_stats_from_teams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate the statistics of a game between two teams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>team1</strong> – team class of team 1</p></li>
+<li><p><strong>team2</strong> – team class of team 2</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>extra_time</strong> – If True, extra time and penalty shootout are included</p></li>
+<li><p><strong>n_sim</strong> – Number of simulations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>home goals, away goals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.simulate_game_wo_overtime">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">simulate_game_wo_overtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AvGoalsF1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsF2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AvGoalsA2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#simulate_game_wo_overtime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.simulate_game_wo_overtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a game between two teams with given average goals for and against in
+90 minutes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AvGoalsF1</strong> – Average goals for team 1</p></li>
+<li><p><strong>AvGoalsF2</strong> – Average goals for team 2</p></li>
+<li><p><strong>AvGoalsA1</strong> – Average goals against team 1</p></li>
+<li><p><strong>AvGoalsA2</strong> – Average goals against team 2</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>multiplier</strong> – Multiplier for the average goals, e.g. 1/3 for overtime</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>home goals, away goals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.sort">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts a table of results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – Table of results</p></li>
+<li><p><strong>sorting</strong> – Sorting method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sorted table, ranking</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.fussball.who_won">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.fussball.</span></span><span class="sig-name descname"><span class="pre">who_won</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">home</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">away</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/fussball.html#who_won"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.fussball.who_won" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns who won the game. 0 if home won, 1 if draw and 2 if away won.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>home</strong> – Home goals</p></li>
+<li><p><strong>away</strong> – Away goals</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>0 if home won, 1 if draw and 2 if away won</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-fussballgott.league">
+<span id="fussballgott-league-module"></span><h2>fussballgott.league module<a class="headerlink" href="#module-fussballgott.league" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.league.np_to_pd">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.league.</span></span><span class="sig-name descname"><span class="pre">np_to_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_num2team</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/league.html#np_to_pd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.league.np_to_pd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert numpy table to pandas table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – Table of the league</p></li>
+<li><p><strong>dict_num2team</strong> – Dictionary that maps indices to teams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Table of the league as pandas table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.league.pd_to_np">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.league.</span></span><span class="sig-name descname"><span class="pre">pd_to_np</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/league.html#pd_to_np"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.league.pd_to_np" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert pandas schedule and table to numpy arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> – Schedule of the league</p></li>
+<li><p><strong>table</strong> – Table of the league</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>schedule and table as numpy arrays</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.league.simulate">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.league.</span></span><span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_games</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progressbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tournament_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/league.html#simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.league.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a league with given teams and schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>teams</strong> – Dictionary with teams as keys and team objects as values</p></li>
+<li><p><strong>schedule</strong> – Schedule of the league. If int, all teams play against each other
+schedule times. If pd.DataFrame, the schedule is given as a table with columns
+“Home” and “Away”.</p></li>
+<li><p><strong>table</strong> – Table of the league. If None, a new table is created</p></li>
+<li><p><strong>missing_games</strong> – List of games that are not played</p></li>
+<li><p><strong>n_sim</strong> – Number of simulations</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>sorting</strong> – Sorting of the table</p></li>
+<li><p><strong>progressbar</strong> – If True, a progressbar is shown</p></li>
+<li><p><strong>tournament_mode</strong> – If True, the table is returned, if False, the ranking table
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>table (if tournament_mode) or ranking table (if not tournament_mode)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.league.simulate_once">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.league.</span></span><span class="sig-name descname"><span class="pre">simulate_once</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_games</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_num2team</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/league.html#simulate_once"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.league.simulate_once" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a league with given teams and schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> – numpy array with schedule</p></li>
+<li><p><strong>table</strong> – numpy array with table</p></li>
+<li><p><strong>teams</strong> – Dictionary with teams as keys and team objects as values</p></li>
+<li><p><strong>missing_games</strong> – List of games that are not played</p></li>
+<li><p><strong>dict_num2team</strong> – Dictionary that maps indices to teams</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>changed table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-fussballgott.load">
+<span id="fussballgott-load-module"></span><h2>fussballgott.load module<a class="headerlink" href="#module-fussballgott.load" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.create_table">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sched_n_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#create_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.create_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the table from the schedule and results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sched_n_r</strong> – Schedule and results</p></li>
+<li><p><strong>teams</strong> – List of teams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Table, missing games</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.get_missing_games">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">get_missing_games</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#get_missing_games"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.get_missing_games" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the missing games from the schedule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – Table</p></li>
+<li><p><strong>schedule</strong> – Schedule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean array with missing games</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.get_teams_from_df">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">get_teams_from_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['Home',</span> <span class="pre">'Away']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#get_teams_from_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.get_teams_from_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all teams from a DataFrame with a schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – DataFrame with schedule</p></li>
+<li><p><strong>columns</strong> – Columns of the DataFrame that contain the teams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array with all teams</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.league">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">league</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#league"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.league" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a league from a file or a list of files. Setups the teams classes,
+the schedule, the table and the missing games.</p>
+<p>Input can be:
+- One file with the schedule and results of the games played so far
+- Two files, one with the schedule and one with the table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files</strong> – File or list of files</p></li>
+<li><p><strong>delimiter</strong> – Delimiter of the files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>teams, schedule, table, missing_games</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.tiebreaker">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">tiebreaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Goal</span> <span class="pre">Difference'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#tiebreaker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.tiebreaker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the table according to the tiebreaker rule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – Table to be sorted</p></li>
+<li><p><strong>rule</strong> – Tiebreaker rule</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sorted table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.load.tournament">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.load.</span></span><span class="sig-name descname"><span class="pre">tournament</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/load.html#tournament"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.load.tournament" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the tournament plan from file and setup team classes. Assuming your filename is
+<cite>tournament_</cite>, you should have the following files in your path:</p>
+<ul class="simple">
+<li><p><cite>tournament_mode.CSV</cite> to describe the mode of the tournament</p></li>
+<li><p><cite>tournament_teams.CSV</cite> to describe the teams playing</p></li>
+<li><p><cite>tournament_{n}.CSV</cite> with n ranging from 2 to 2**x, where x is the number of rounds
+played in the tournament. The files contain the schedule of the games played in
+the knockout round.</p></li>
+<li><p><cite>tournament_special_rule.CSV</cite> if there is a special rule for the tournament (e.g.
+some of the best third placed teams qualify for the next round)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – Name of the file</p></li>
+<li><p><strong>path</strong> – Path to the file</p></li>
+<li><p><strong>delimiter</strong> – Delimiter of the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>teams, schedule, table, missing_games</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-fussballgott.plot">
+<span id="fussballgott-plot-module"></span><h2>fussballgott.plot module<a class="headerlink" href="#module-fussballgott.plot" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.plot.game_stat">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.plot.</span></span><span class="sig-name descname"><span class="pre">game_stat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winprob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'home'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'away'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/plot.html#game_stat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.plot.game_stat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the game statistics in a heatmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sim</strong> – DataFrame with the simulation results</p></li>
+<li><p><strong>winprob</strong> – Array with the win probabilities</p></li>
+<li><p><strong>team1</strong> – Name of the first team</p></li>
+<li><p><strong>team2</strong> – Name of the second team</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.plot.league">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.plot.</span></span><span class="sig-name descname"><span class="pre">league</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/plot.html#league"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.plot.league" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the league table in a heatmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sim</strong> – DataFrame with the simulation results</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.plot.tournament">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.plot.</span></span><span class="sig-name descname"><span class="pre">tournament</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/plot.html#tournament"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.plot.tournament" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the tournament table in a heatmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sim</strong> – DataFrame with the simulation results</p></li>
+<li><p><strong>sort_for</strong> – Column to sort for</p></li>
+<li><p><strong>save</strong> – Path to save the plot</p></li>
+<li><p><strong>prob_style</strong> – “standard” or “cumulative”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-fussballgott.team">
+<span id="fussballgott-team-module"></span><h2>fussballgott.team module<a class="headerlink" href="#module-fussballgott.team" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fussballgott.team.Team">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fussballgott.team.</span></span><span class="sig-name descname"><span class="pre">Team</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GoalsF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GoalsA</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">played</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/team.html#Team"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.team.Team" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for a team.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name of the team</p></li>
+<li><p><strong>GoalsF</strong> – Goals scored</p></li>
+<li><p><strong>GoalsA</strong> – Goals conceded</p></li>
+<li><p><strong>played</strong> – Number of games played</p></li>
+<li><p><strong>penalty_scoring</strong> – Factor for penalty scoring</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="fussballgott.team.Team.AvGoalsA">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AvGoalsA</span></span><a class="headerlink" href="#fussballgott.team.Team.AvGoalsA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Average goals conceded per game</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="fussballgott.team.Team.AvGoalsF">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AvGoalsF</span></span><a class="headerlink" href="#fussballgott.team.Team.AvGoalsF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Average goals scored per game</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-fussballgott.tournament">
+<span id="fussballgott-tournament-module"></span><h2>fussballgott.tournament module<a class="headerlink" href="#module-fussballgott.tournament" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fussballgott.tournament.simulate">
+<span class="sig-prename descclassname"><span class="pre">fussballgott.tournament.</span></span><span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_round</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_goals_against</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">small_final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progressbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fussballgott/tournament.html#simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fussballgott.tournament.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a tournament with given teams and schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – Dictionary with the mode of the tournament</p></li>
+<li><p><strong>ko_round</strong> – List of pandas DataFrames with the knockout rounds</p></li>
+<li><p><strong>teams</strong> – Dictionary with teams as keys and team objects as values</p></li>
+<li><p><strong>groups</strong> – Dictionary with groups as keys and teams as values</p></li>
+<li><p><strong>n_sim</strong> – Number of simulations</p></li>
+<li><p><strong>include_goals_against</strong> – If True, the average goals against are included</p></li>
+<li><p><strong>sorting</strong> – Sorting of the table</p></li>
+<li><p><strong>small_final</strong> – If True, the tournament ends has a small final</p></li>
+<li><p><strong>progressbar</strong> – If True, a progressbar is shown</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>simlated tournament table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-fussballgott">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-fussballgott" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="fussballgott"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="tutorial_tournament/tutorial_tournament.html" class="btn btn-neutral" title="Tutorial: Tournaments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+      &copy; Copyright 2021, Silvan Fischbacher.
+  </p>
+
+  <a href="https://www.github.com/snide/sphinx_rtd_theme">Sphinx theme</a> based on <a href="http://readthedocs.org">Read the Docs</a> customized by J. Akeret, L. Gamper, A. Amara and U. Schmitt
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

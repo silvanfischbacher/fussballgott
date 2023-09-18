@@ -2,7 +2,7 @@
 Installation
 ============
 
-At the command line either via easy_install or pip::
+At the command line either via pip::
 
-    $ pip install fussballgott
+    pip install fussballgott
 

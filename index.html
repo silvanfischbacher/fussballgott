@@ -78,7 +78,29 @@
             <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_single_game/tutorial_single_game.html">Tutorial: Single Games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_league/tutorial_league.html">Tutorial: League</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#full-league-simulation">Full League simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule">League from schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule-without-results-and-current-table">League from schedule without results and current table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tournament/tutorial_tournament.html">Tutorial: Tournaments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fussballgott.html">fussballgott package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.fussball">fussballgott.fussball module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.league">fussballgott.league module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.load">fussballgott.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.plot">fussballgott.plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.team">fussballgott.team module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.tournament">fussballgott.tournament module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">fussballgott</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html">fussballgott package</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>
@@ -122,7 +144,7 @@
           
   <section id="fussballgott">
 <h1>FUSSBALLGOTT<a class="headerlink" href="#fussballgott" title="Permalink to this heading">¶</a></h1>
-<p><img alt="example workflow" src="https://github.com/silvanfischbacher/fussballgott/actions/workflows/ci.yml/badge.svg" /></p>
+<p><img alt="example workflow" src="https://github.com/silvanfischbacher/fussballgott/actions/workflows/test.yml/badge.svg" /></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                     ___
  o__        o__     |   |\
 /|          /\      |   |X\
@@ -149,7 +171,7 @@
 <li><p>Should goals against the team be included in the simulation? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">include_goals_against</span></code></p></li>
 <li><p>Will there be extra time and penalty shootout in case of a draw? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">extra_time</span></code></p></li>
 <li><p>What is the chance of the team to score in a penalty (for penalty_shootout)? (optional, default=0.75): <code class="docutils literal notranslate"><span class="pre">penalty_scoring1,</span> <span class="pre">penalty_scoring2</span></code></p></li>
-<li><p>Should the function return when the game was over (only relevant for extra time)? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">when</span></code></p></li>
+<li><p>Should the function return when the game was over (only relevant for extra time)? (optional, default=False): <code class="docutils literal notranslate"><span class="pre">return_when</span></code></p></li>
 </ul>
 <p>Then, you can run the simulation by</p>
 <p><code class="docutils literal notranslate"><span class="pre">home,</span> <span class="pre">away</span> <span class="pre">=</span> <span class="pre">fussballgott.fussball.simulate_game(AvGoalsF1,</span> <span class="pre">AvGoalsF2,</span> <span class="pre">...)</span></code></p>
@@ -168,10 +190,10 @@
 <li><p>Full simulation: Most convenient for simulation at the beginning of a season. For doing that, you have to initialize the team strengths first by creating a dictionary where you create for each team a teamclass object:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">teams</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;GCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;GCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;YB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;YB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">1.7</span><span class="p">)</span>
-<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">3.2</span><span class="p">)</span>
-<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">4.3</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;GCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">Team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;GCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;YB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">Team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;YB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">1.7</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">Team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCB&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="n">teams</span><span class="p">[</span><span class="s1">&#39;FCZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">Team</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FCZ&#39;</span><span class="p">,</span> <span class="n">GoalsF</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">GoalsA</span><span class="o">=</span><span class="mf">4.3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then you can run the simulation using</p>
@@ -220,7 +242,29 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_single_game/tutorial_single_game.html">Tutorial: Single Games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_league/tutorial_league.html">Tutorial: League</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#full-league-simulation">Full League simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule">League from schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule-without-results-and-current-table">League from schedule without results and current table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tournament/tutorial_tournament.html">Tutorial: Tournaments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fussballgott.html">fussballgott package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.fussball">fussballgott.fussball module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.league">fussballgott.league module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.load">fussballgott.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.plot">fussballgott.plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.team">fussballgott.team module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.tournament">fussballgott.tournament module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">fussballgott</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html">fussballgott package</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>

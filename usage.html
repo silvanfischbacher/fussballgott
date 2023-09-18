@@ -51,7 +51,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="fussballgott 0.1.0 documentation" href="index.html"/>
-        <link rel="next" title="Tutorial" href="tutorial.html"/>
+        <link rel="next" title="Tutorial: Single Games" href="tutorial_single_game/tutorial_single_game.html"/>
         <link rel="prev" title="Installation" href="installation.html"/> 
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -79,7 +79,29 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_single_game/tutorial_single_game.html">Tutorial: Single Games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_league/tutorial_league.html">Tutorial: League</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#full-league-simulation">Full League simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule">League from schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_league/tutorial_league.html#league-from-schedule-without-results-and-current-table">League from schedule without results and current table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tournament/tutorial_tournament.html">Tutorial: Tournaments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fussballgott.html">fussballgott package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.fussball">fussballgott.fussball module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.league">fussballgott.league module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.load">fussballgott.load module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.plot">fussballgott.plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.team">fussballgott.team module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott.tournament">fussballgott.tournament module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html#module-fussballgott">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">fussballgott</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fussballgott.html">fussballgott package</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#merge-request-guidelines">Merge Request Guidelines</a></li>
@@ -123,10 +145,16 @@
           
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
-<p>To use fussballgott in a project:</p>
+<p>To simulate a football game with fussballgott, you can run the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fussballgott</span>
+<span class="n">home</span><span class="p">,</span> <span class="n">away</span> <span class="o">=</span> <span class="n">fussball</span><span class="o">.</span><span class="n">simulate_game</span><span class="p">(</span>
+<span class="n">AvGoalsF1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">AvGoalsF2</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;result of the game: </span><span class="si">{</span><span class="n">home</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">away</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>For more information, please refer to the documentation at …</p>
 </section>
 
 
@@ -134,7 +162,7 @@
   
     <div class="rst-footer-buttons">
       
-        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="tutorial_single_game/tutorial_single_game.html" class="btn btn-neutral float-right" title="Tutorial: Single Games"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="installation.html" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
