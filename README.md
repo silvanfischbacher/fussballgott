@@ -1,6 +1,8 @@
 # FUSSBALLGOTT
 
 ![example workflow](https://github.com/silvanfischbacher/fussballgott/actions/workflows/test.yml/badge.svg)
+[![Documentation Status](https://readthedocs.org/projects/fussballgott/badge/?version=latest)](https://fussballgott.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/fussballgott.svg)](https://badge.fury.io/py/fussballgott)
 
                          ___
      o__        o__     |   |\
