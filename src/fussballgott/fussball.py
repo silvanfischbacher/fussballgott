@@ -87,6 +87,7 @@ def simulate_game_stats_from_teams(
     team2,
     include_goals_against=False,
     extra_time=False,
+    extra_time_result=False,
     n_sim=1e5,
 ):
     """
@@ -96,8 +97,9 @@ def simulate_game_stats_from_teams(
     :param team2: team class of team 2
     :param include_goals_against: If True, the average goals against are included
     :param extra_time: If True, extra time and penalty shootout are included
+    :param extra_time_result: if True, result after extra time is included in return
     :param n_sim: Number of simulations
-    :return: home goals, away goals
+    :return: table of result probabilities, win probabilities
     """
     return simulate_game_stats(
         AvGoalsF1=team1.AvGoalsF,
@@ -106,6 +108,7 @@ def simulate_game_stats_from_teams(
         AvGoalsA2=team2.AvGoalsA,
         include_goals_against=include_goals_against,
         extra_time=extra_time,
+        extra_time_result=extra_time_result,
         penalty_scoring1=team1.penalty_scoring,
         penalty_scoring2=team2.penalty_scoring,
         n_sim=n_sim,
@@ -192,6 +195,7 @@ def simulate_game_stats(
     n_sim=1e5,
     include_goals_against=False,
     extra_time=False,
+    extra_time_result=False,
     penalty_scoring1=0.75,
     penalty_scoring2=0.75,
 ):
@@ -205,6 +209,7 @@ def simulate_game_stats(
     :param n_sim: Number of simulations
     :param include_goals_against: If True, the average goals against are included
     :param extra_time: If True, extra time and penalty shootout are included
+    :param extra_time_result: if True, result after extra time is included in return
     :param penalty_scoring1: Penalty scoring of team 1 (between 0 and 1)
     :param penalty_scoring2: Penalty scoring of team 2 (between 0 and 1)
     :return: table of results, win probabilities
@@ -225,7 +230,10 @@ def simulate_game_stats(
             return_when=True,
         )
         win_prob[who_won(home120, away120)] += 1
-        table[min(home, 10), min(away, 10)] += 1
+        if extra_time_result:
+            table[min(home120, 10), min(away120, 10)] += 1
+        else:
+            table[min(home, 10), min(away, 10)] += 1
 
     return table / n_sim, win_prob / n_sim
 
