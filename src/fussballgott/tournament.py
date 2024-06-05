@@ -201,8 +201,9 @@ def simulate(
                     dict_small_final[sch.loc[game]["Game"]] = team1
 
             # SMALL FINAL #
-            team1 = dict_small_final[1]
-            team2 = dict_small_final[2]
+            keys = list(dict_small_final.keys())
+            team1 = dict_small_final[keys[0]]
+            team2 = dict_small_final[keys[1]]
             h, a = fussball.simulate_game(
                 teams[team1].AvGoalsF,
                 teams[team2].AvGoalsF,
@@ -222,8 +223,9 @@ def simulate(
 
             # FINAL #
             final_round += 2
-            team1 = dict_final[1]
-            team2 = dict_final[2]
+            keys = list(dict_final.keys())
+            team1 = dict_final[keys[0]]
+            team2 = dict_final[keys[1]]
             h, a = fussball.simulate_game(
                 teams[team1].AvGoalsF,
                 teams[team2].AvGoalsF,
@@ -243,8 +245,9 @@ def simulate(
         else:
             # FINAL #
             final_round += 1
-            team1 = dict_ko[1]
-            team2 = dict_ko[2]
+            keys = list(dict_ko.keys())
+            team1 = dict_ko[keys[0]]
+            team2 = dict_ko[keys[1]]
             h, a = fussball.simulate_game(
                 teams[team1].AvGoalsF,
                 teams[team2].AvGoalsF,
