@@ -1,5 +1,7 @@
 # Copyright (C) 2021 Silvan Fischbacher
 
+import warnings
+
 import numpy as np
 from tqdm.auto import trange
 
@@ -198,6 +200,7 @@ def simulate_game_stats(
     extra_time_result=False,
     penalty_scoring1=0.75,
     penalty_scoring2=0.75,
+    max_goals=10,
 ):
     """
     Simulate the statistics of a game between two teams.
@@ -212,10 +215,11 @@ def simulate_game_stats(
     :param extra_time_result: if True, result after extra time is included in return
     :param penalty_scoring1: Penalty scoring of team 1 (between 0 and 1)
     :param penalty_scoring2: Penalty scoring of team 2 (between 0 and 1)
+    :param max_goals: Maximum number of goals for the table
     :return: table of results, win probabilities
     """
     n_sim = int(n_sim)
-    table = np.zeros((11, 11))
+    table = np.zeros((max_goals + 1, max_goals + 1))
     win_prob = np.zeros(3)
     for i in trange(n_sim):
         home120, away120, when, home, away = simulate_game(
@@ -231,10 +235,16 @@ def simulate_game_stats(
         )
         win_prob[who_won(home120, away120)] += 1
         if extra_time_result:
-            table[min(home120, 10), min(away120, 10)] += 1
+            table[min(home120, max_goals), min(away120, max_goals)] += 1
         else:
-            table[min(home, 10), min(away, 10)] += 1
-
+            table[min(home, max_goals), min(away, max_goals)] += 1
+    if extra_time_result & (table[-1, -1] > 0):
+        warnings.warn(
+            f"Some penalty shootouts went on for very long (>{max_goals} goals) "
+            "and are therefore assigned to the very last diagonal entry bin. This does "
+            "not mean that these were actual draws! Consider to increase max_goals.",
+            UserWarning,
+        )
     return table / n_sim, win_prob / n_sim
 
 

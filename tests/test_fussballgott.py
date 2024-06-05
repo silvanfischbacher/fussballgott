@@ -170,14 +170,27 @@ def test_sorting_error():
 
 def test_extra_time_result():
     stat, winprob = fussball.simulate_game_stats(
-        AvGoalsF1=10,
-        AvGoalsF2=0.5,
-        AvGoalsA1=0.5,
-        AvGoalsA2=10,
+        AvGoalsF1=1,
+        AvGoalsF2=1,
+        AvGoalsA1=1,
+        AvGoalsA2=1,
         include_goals_against=True,
         extra_time=True,
         extra_time_result=True,
     )
     assert winprob[1] == 0
-    for d in np.diag(stat):
+    for d in np.diag(stat)[:-1]:
         assert d == 0
+
+
+def test_extra_time_result_warning():
+    with pytest.warns(UserWarning):
+        fussball.simulate_game_stats(
+            AvGoalsF1=1,
+            AvGoalsF2=1,
+            AvGoalsA1=1,
+            AvGoalsA2=1,
+            include_goals_against=True,
+            extra_time=True,
+            extra_time_result=True,
+        )
