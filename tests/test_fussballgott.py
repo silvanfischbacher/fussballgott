@@ -2,6 +2,7 @@
 
 import os
 
+import numpy as np
 import pytest
 
 from fussballgott import fussball, league, load, plot, team, tournament
@@ -165,3 +166,18 @@ def test_sorting_error():
     table = None
     with pytest.raises(NotImplementedError):
         fussball.sort(table, "who_has_better_haircut")
+
+
+def test_extra_time_result():
+    stat, winprob = fussball.simulate_game_stats(
+        AvGoalsF1=10,
+        AvGoalsF2=0.5,
+        AvGoalsA1=0.5,
+        AvGoalsA2=10,
+        include_goals_against=True,
+        extra_time=True,
+        extra_time_result=True,
+    )
+    assert winprob[1] == 0
+    for d in np.diag(stat):
+        assert d == 0
